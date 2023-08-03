@@ -1,5 +1,14 @@
+import { error, json, Router } from 'itty-router'
+
+const router = Router()
+
+router
+  .get('/', () => 'Success!')
+  .all('*', () => error(404))
+
 export default {
-	async fetch(request, env, ctx) {
-		return new Response('Merhaba Arkadaş!');
-	},
-};
+  fetch: (req, ...args) => router
+                            .handle(req, ...args)
+                            .then(json)
+                            .catch(error)
+}
