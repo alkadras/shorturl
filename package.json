@@ -12,6 +12,6 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-   "itty-router": "latest"
+   "hono": "latest"
   }
 }

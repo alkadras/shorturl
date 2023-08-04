@@ -1,14 +1,6 @@
-import { error, json, Router } from 'itty-router'
+import { Hono } from 'hono'
+const app = new Hono()
 
-const router = Router()
+app.get('/', (c) => c.text('Hono!'))
 
-router
-  .get('/', () => 'Success!')
-  .all('*', () => error(404))
-
-export default {
-  fetch: (req, ...args) => router
-                            .handle(req, ...args)
-                            .then(json)
-                            .catch(error)
-}
+export default app
